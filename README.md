@@ -2,6 +2,8 @@
 
 *Using machine learning to classify characteristics of New Belgium beer using chemical metrics and beer-tasters' sensory comments*
 
+**Please note that I am unable to share source code for this project because what resulted is the property of New Belgium Brewery**
+
 ## Table Of Contents
 
 * [Motivation](#motivation)
