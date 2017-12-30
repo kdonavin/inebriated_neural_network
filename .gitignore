@@ -1,0 +1,27 @@
+#Directories
+agreement/
+archive/
+data/
+flask_app/
+jan_code/
+notes/
+presentation/
+src/__pycache__/
+
+
+#Files
+Icon*
+
+#Files types
+*.docx
+*.gdoc
+*.gsheet
+*.gslides
+*.ipynb
+*.pdf
+*.pkl
+*.xlsx
+
+#OS files
+.DS_Store
+~$*
