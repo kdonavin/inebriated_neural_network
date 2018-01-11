@@ -1,6 +1,6 @@
-# Intoxicated Machine Learning
+# Inebriated Neural Network
 
-*Using machine learning to classify characteristics of New Belgium beer using chemical metrics and beer-tasters' sensory comments*
+*Using a multilayer perceptron to classify characteristics of New Belgium beer using chemical metrics and beer-tasters' sensory comments*
 
 **Please note that I am unable to share source code for this project because resulting data pipeline and prediction models are the property of New Belgium Brewery**
 
@@ -36,7 +36,7 @@ Brew batch numbers are stored in different formats across the ~10 years of colle
 
 <img src="images/nb_break_line.png" width=100% height=100%/>
 
-A **Multi-Layer Perceptron (MLP) Classifier** prediction model from sci-kit learn is applied to this problem. A neural network (in which I taste a hint of vanilla) with 6 Hidden Layers. Model hyper-parameters were selected based on a grid search prioritizing F1-Score (i.e., harmonic mean of precision and recall) for TTB classification. 
+A **Multi-Layer Perceptron (MLP) Classifier** prediction model from sci-kit learn is applied to this problem. A neural network (in which I taste a note of vanilla) with 6 Hidden Layers. Model hyper-parameters were selected based on a grid search prioritizing F1-Score (i.e., harmonic mean of precision and recall) for TTB classification. 
 <!-- 2. **Random Forest Classifier:** With 600 estimators. -->
 
 The following is a model performance graphic. The neural network’s performance on TTB beer is colored in orange and not-TTB beer in blue. This model may be useful to New Belgium for it identifies beers that are not-TTB in more than 9 out of 10 cases. Model accuracy suffers here because the neural network is essentially over-reactive, guessing not-TTB too often. Notice in precision that only about 1 in 5 New Belgium batches labeled not-TTB are in fact not-TTB. however, when the neural network predicts TTB, it is correct in over 9 of 10 cases.
