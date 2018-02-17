@@ -2,7 +2,7 @@
 
 *Using machine learning to classify "Hot" or "Not" batches of New Belgium beer using chemical metrics and beer-tasters' sensory responses*
 
-**Please note that I am unable to share source code for this project because what resulted is the property of New Belgium Brewery**
+**Please note that I am unable to share source code for this project because resulting data pipeline and prediction models are the property of New Belgium Brewery**
 
 ## Table Of Contents
 
@@ -41,7 +41,6 @@ However, Beer tasters are imperfect and require training in order to be on the p
 <!-- Edit here -->
 
 A **Multi-Layer Perceptron (MLP) Classifier** prediction model from sci-kit learn is applied to this problem. A neural network (in which I taste a hint of vanilla) with 6 Hidden Layers. Model hyper-parameters were selected based on a grid search prioritizing F1-Score (i.e., harmonic mean of precision and recall) for "Hot" or "Not" classification. 
-<!-- 2. **Random Forest Classifier:** With 600 estimators. -->
 
 The following is a model performance graphic. The neural network’s performance on "Hot" beer is colored (appropriately) in red and "Not" beer in blue. This model may be useful to New Belgium for it identifies beers that are "Not" in more than 9 out of 10 cases. Model accuracy suffers here because the neural network is essentially over-reactive, guessing "Not" too often. Notice in precision that only about 1 in 5 New Belgium batches labeled "Not" are in fact "Not". however, when the neural network predicts "Hot", it is correct in over 9 of 10 cases.
 
