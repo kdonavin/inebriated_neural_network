@@ -1,6 +1,6 @@
-# Intoxicated Machine Learning
+# Inebriated Neural Network
 
-*Using machine learning to classify characteristics of New Belgium beer using chemical metrics and beer-tasters' sensory comments*
+*Using machine learning to classify "Hot" or "Not" batches of New Belgium beer using chemical metrics and beer-tasters' sensory responses*
 
 **Please note that I am unable to share source code for this project because what resulted is the property of New Belgium Brewery**
 
@@ -16,9 +16,9 @@
 
 <img src="images/nb_break_line.png" width=100% height=100%/>
 
-Can we use chemical measurements of New Belgium beer to predict the commentary of trained beer tasters' and vice versa? Chemical metrics of alcohol (abv), calories, gravity (Ea), pH and other standard measurements are used to predict whether the batch of beer will be rated TTB (True to Brand) by trained New Belgium beer tasters. A web application is developed for use by New Belgium's team of chemists and biologist monitoring chemical and sensory characteristics of each batch of beer. This tool gives these beer scientists the ability to predict how likely a batch of beer will be given the stamp of approval (i.e., TTB) needed in order to bottle and ship each batch.
+Can we use chemical measurements of New Belgium beer to predict the commentary of trained beer tasters'. Chemical metrics of alcohol (ABV), calories, gravity (Ea), pH and other standard measurements are used to predict whether a batch of beer will be rated "Hot" or "Not" by trained New Belgium beer tasters. "Hot" beer meets expectations in terms of key characteristics, such as clarity, aromas, taste profile, and so on. "Not" beer fails to meet these expectations. Both "Hot" and "Not" are stand-ins for proprietary terminology. 
 
-Further analysis uses processed sensory comments (i.e., natural language) from New Belgium beer tasters and a multi-layer perceptron neural network classifier, to predict the chemical characteristics of New Belgium beer batches are predicted.
+A web application is developed for use by New Belgium's team of sensory scientists monitoring chemical and biological characteristics of each batch of beer. This tool gives the sensory scientists the capability to predict whether a batch of beer will be given the "Hot" or "Not" stamp of approval by the tasting panel, in order to bottle and ship each batch.
 
 ## The Data
 
@@ -28,18 +28,22 @@ New Belgium beer-batch data consists of two main datasets, linked on unique brew
 
 1. Chemical Measurements (batch level): e.g., pH, abv, acetic acid
 2. Brand - e.g., Fat Tire, Voodoo Ranger ipa
-3. Sensory Data (taster level): True To Brand (TTB) subjective designations and comments on beer *modalities*: aroma, mouth-feel/body, flavor, aroma and overall/fresh
+3. Sensory Data (taster level): "Hot" subjective designations and comments on beer *modalities*: aroma, mouth-feel/body, flavor, aroma and overall/fresh
 
-Brew batch numbers are stored in different formats across the ~10 years of collected data. Thus, these will need to be processed into a uniform format. Batch numbers should also be combined with brewery location (i.e., Ft. Collins, co or Asheville, nc) to create a unique id due to possible overlap in batch numbers between the two locations. Sensory comment data will be vectorized for analysis (i.e., for natural language processing). A special exception for the word 'not' may be required due to the prevalence of the word 'not' in modality comments. 
+Data exists at the taster level, which includes the commentary from each taster, as well as at the batch level, which includes chemical measurements of each batch. The taster's "Hot" or "Not" commentary was aggregated from several modality categories to create one "Hot" or "Not" classification per batch. The entire panel is summarized to classify a batch as "Hot" if 90% of votes in the modality categories are "Hot", and "Not" otherwise. 
+
+However, Beer tasters are imperfect and require training in order to be on the panel. As a way to prioritize the most skilled taster's "Hot" or "Not" classifications, *taster quality* metric was used as classification weights prior to aggregation to the batch level. These taster quality measurements were the results of another Galvanize student, Jan Van Zeghbroeck's capstone project [Seeing Taste](https://github.com/janvanzeghbroeck/Seeing-Taste). The quality of each taster is determined by how able they are to detect beer modality differences, and how biased they may be towards "Hot" or "Not" classifications in those modalities. 
 
 ## Analysis 
 
 <img src="images/nb_break_line.png" width=100% height=100%/>
 
-A **Multi-Layer Perceptron (mlp) Classifier** prediction model from sci-kit learn is applied to this problem. A neural network (in which I taste a hint of vanilla) with 6 Hidden Layers. Model hyper-parameters were selected based on a grid search prioritizing F1-Score (i.e., harmonic mean of precision and recall) for TTB classification. 
+<!-- Edit here -->
+
+A **Multi-Layer Perceptron (MLP) Classifier** prediction model from sci-kit learn is applied to this problem. A neural network (in which I taste a hint of vanilla) with 6 Hidden Layers. Model hyper-parameters were selected based on a grid search prioritizing F1-Score (i.e., harmonic mean of precision and recall) for "Hot" or "Not" classification. 
 <!-- 2. **Random Forest Classifier:** With 600 estimators. -->
 
-The following is a model performance graphic. The neural network’s performance on TTB beer is colored in orange and not-TTB beer in blue. This model may be useful to New Belgium for it identifies beers that are not-TTB in more than 9 out of 10 cases. Model accuracy suffers here because the neural network is essentially over-reactive, guessing not-TTB too often. Notice in precision that only about 1 in 5 New Belgium batches labeled not-TTB are in fact not-TTB. however, when the neural network predicts TTB, it is correct in over 9 of 10 cases.
+The following is a model performance graphic. The neural network’s performance on "Hot" beer is colored (appropriately) in red and "Not" beer in blue. This model may be useful to New Belgium for it identifies beers that are "Not" in more than 9 out of 10 cases. Model accuracy suffers here because the neural network is essentially over-reactive, guessing "Not" too often. Notice in precision that only about 1 in 5 New Belgium batches labeled "Not" are in fact "Not". however, when the neural network predicts "Hot", it is correct in over 9 of 10 cases.
 
 <img src="images/model_performance.png"/>
 
