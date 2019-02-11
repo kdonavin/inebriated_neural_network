@@ -49,7 +49,7 @@ def fit_transform_comments(X_train, X_test):
 
 def balance_not_hot(X, y, minority_class=1):
 	'''
-	A method to balance minority 'Not-TTB' class.
+	A method to balance minority 'Not-Hot' class.
 
 	INPUT
 		X - iterable 2D array-like object
